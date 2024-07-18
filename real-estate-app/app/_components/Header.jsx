@@ -5,9 +5,11 @@ import { Button } from '@/components/ui/button'
 import { Plus } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { SignInButton, UserButton, useUser } from '@clerk/nextjs'
 
 function Header() {
     const path = usePathname();
+    const { user, isSignedIn } = useUser();
     useEffect(() => {
         console.log(path);
     }, [])
@@ -25,7 +27,11 @@ function Header() {
             </div>
             <div className='flex gap-2'>
                 <Button><Plus className='h-4 w-4 mr-2' />Post Your Ad</Button>
-                <Button variant='outline'>Login</Button>
+                {isSignedIn ? <UserButton /> :
+                    <Link href={'/sign-in'}>
+                        <Button variant='outline'>Login</Button>
+                    </Link>}
+                {/* <Button variant='outline'>Login</Button> */}
             </div>
         </div>
 
