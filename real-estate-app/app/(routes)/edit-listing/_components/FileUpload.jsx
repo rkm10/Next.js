@@ -1,4 +1,4 @@
-import { Image } from 'lucide-react';
+import Image from 'next/image';
 import React, { useState } from 'react'
 
 function FileUpload() {
@@ -21,14 +21,18 @@ function FileUpload() {
                         <p className="mb-2 text-sm text-gray-500 dark:text-gray-400"><span className="font-semibold">Click to upload</span> or drag and drop</p>
                         <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
                     </div>
-                    <input id="dropzone-file" type="file" onChange={handleFileUpload} multiple className="hidden" />
+                    <input id="dropzone-file" type="file" onChange={handleFileUpload} multiple className="hidden" accept='image/png, image/gif, image/jpeg' />
                 </label>
             </div>
-            {imagePreview.map((image, index) => (
-                <div key={index}>
-                    <Image src={image} alt="Preview" width={200} height={200} />
-                </div>
-            ))}
+            <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-10 gap-3 mt-3'>
+                {imagePreview.map((image, index) => (
+                    <div key={index}>
+                        <Image src={image} alt={index} width={100} height={100}
+                            className='rounded-lg object-cover h-[100px] w-[100px]'
+                        />
+                    </div>
+                ))}
+            </div>
         </div>
     )
 }
