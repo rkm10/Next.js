@@ -1,7 +1,15 @@
 "use client"
 import React from 'react'
-import { Label } from "../../../../components/ui/label"
-import { RadioGroup, RadioGroupItem } from "../../../../components/ui/radio-group"
+import { Label } from "../../../../components/ui/label";
+import { RadioGroup, RadioGroupItem } from "../../../../components/ui/radio-group";
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "../../../../components/ui/select";
+
 
 function EditListing() {
     return (
@@ -21,6 +29,21 @@ function EditListing() {
                                 <Label htmlFor="Sell">Sell</Label>
                             </div>
                         </RadioGroup>
+
+                    </div>
+                    <div className='flex flex-col gap-2'>
+                        <h2 className='text-lg font-medium text-slate-500'>Property Type</h2>
+                        <Select>
+                            <SelectTrigger className="w-[180px]">
+                                <SelectValue placeholder="Select Property Type" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectItem value="Single Family House">Single Family House</SelectItem>
+                                <SelectItem value="Town House">Town House</SelectItem>
+                                <SelectItem value="Condominium">Condominium</SelectItem>
+                            </SelectContent>
+                        </Select>
+
                     </div>
                 </div>
             </div>
