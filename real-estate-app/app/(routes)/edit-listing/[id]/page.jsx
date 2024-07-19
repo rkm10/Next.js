@@ -16,21 +16,37 @@ import { Button } from '../../../../components/ui/button';
 import { usePathname } from 'next/navigation';
 import { toast } from 'sonner';
 import { supabase } from '../../../../utils/supabase/client';
+import { useRouter } from 'next/navigation';
+import { useUser } from '@clerk/nextjs';
 
 
-function EditListing() {
+function EditListing({ params }) {
 
-    const params = usePathname();
+    const { user } = useUser();
+    const router = useRouter();
 
     useEffect(() => {
-        console.log(params.split("/")[2])
-    }, [])
+        console.log("id", params.id)
+        user && verifyUserRecord();
+    }, [user])
+
+    const verifyUserRecord = async () => {
+        const { data, error } = await supabase
+            .from('listing')
+            .select('*')
+            .eq('createdBy', user?.primaryEmailAddress.emailAddress)
+            .eq('id', params.id)
+
+        if (data?.length <= 0) {
+            router.replace('/')
+        }
+    }
 
     const onSubmitHandler = async (formValue) => {
         const { data, error } = await supabase
             .from('listing')
             .update(formValue)
-            .eq('id', params.split('/')[2])
+            .eq('id', params.id)
             .select();
 
         if (data) {
