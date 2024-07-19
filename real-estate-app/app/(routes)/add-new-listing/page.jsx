@@ -33,7 +33,7 @@ function AddNewListing() {
     }
 
     return (
-        <div className='mt-10 md:mx-56 lg:mx-80'>
+        <div className='mt-10 md:mx-56 lg:mx-80 pt-10'>
             <div className='flex flex-col gap-5 justify-center items-center p-10 '>
                 <h2 className='text-2xl font-bold'>AddNewListing</h2>
                 <div className='p-5 rounded-lg border shadow-md flex flex-col gap-5'>
