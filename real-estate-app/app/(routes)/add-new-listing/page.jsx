@@ -5,6 +5,7 @@ import { Button } from '../../../components/ui/button';
 import { supabase } from '../../../utils/supabase/client';
 import { useUser } from '@clerk/nextjs';
 import { toast } from 'sonner';
+import { Loader, LoaderPinwheel } from 'lucide-react';
 
 function AddNewListing() {
     const [selectedAddress, setSelectedAddress] = useState();
@@ -50,7 +51,9 @@ function AddNewListing() {
                         setCoordinates={(value) => setCoordinates(value)}
                     />
                     <Button disabled={!selectedAddress || !coordinates || loader}
-                        onClick={nextHandler}>Next</Button>
+                        onClick={nextHandler}>
+                        {loader ? <LoaderPinwheel className='w-4 h-4 animate-spin' /> : "Add"}
+                    </Button>
                 </div>
             </div>
         </div>
