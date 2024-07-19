@@ -22,7 +22,7 @@ function AddNewListing() {
                         selectedAddress={(value) => setSelectedAddress(value)}
                         setCoordinates={(value) => setCoordinates(value)}
                     />
-                    <Button onclick={nextHandler}>Next</Button>
+                    <Button onClick={nextHandler}>Next</Button>
                 </div>
             </div>
         </div>
