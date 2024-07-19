@@ -18,6 +18,7 @@ import { toast } from 'sonner';
 import { supabase } from '../../../../utils/supabase/client';
 import { useRouter } from 'next/navigation';
 import { useUser } from '@clerk/nextjs';
+import FileUpload from '../_components/FileUpload';
 
 
 function EditListing({ params }) {
@@ -60,8 +61,8 @@ function EditListing({ params }) {
         <div className='mt-28 px-10 md:px-20'>
             <h2 className='text-xl font-bold'>Enter some more details about property</h2>
             <Formik initialValues={{
-                // type: '',
-                // propertyType: '',
+                profileImage: user?.imageUrl,
+                fullName: user?.fullName,
             }}
                 onSubmit={(values) => {
                     console.log(values)
@@ -149,6 +150,8 @@ function EditListing({ params }) {
                                     <h2 className='text-gray-500'>Description</h2>
                                     <Textarea placeholder="" name="description" onChange={handleChange} />
                                 </div>
+                                <h2 className='text-lg font-medium text-slate-500'>Upload Property Images</h2>
+                                <FileUpload />
                             </div>
                             <div className='flex justify-end gap-7'>
                                 <Button variant="outline" className="text-primary border-primary"> Save </Button>
