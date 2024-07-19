@@ -2,7 +2,7 @@ import { Image } from 'lucide-react';
 import React, { useState } from 'react'
 
 function FileUpload() {
-    const [imagePreview, setImagePreview] = useState();
+    const [imagePreview, setImagePreview] = useState([]);
     const handleFileUpload = (event) => {
         const files = event.target.files;
         console.log(files);
@@ -24,9 +24,9 @@ function FileUpload() {
                     <input id="dropzone-file" type="file" onChange={handleFileUpload} multiple className="hidden" />
                 </label>
             </div>
-            {imagePreview.map((preview, index) => (
+            {imagePreview.map((image, index) => (
                 <div key={index}>
-                    <Image src={preview} alt="Preview" width={200} height={200} />
+                    <Image src={image} alt="Preview" width={200} height={200} />
                 </div>
             ))}
         </div>
