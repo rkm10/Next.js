@@ -2,11 +2,13 @@
 import React, { useState } from 'react';
 import GoogleAddressSearch from '../../_components/GoogleAddressSearch'
 import { Button } from '../../../components/ui/button';
+import { supabase } from '../../../utils/supabase/client';
+import { useUser } from '@clerk/nextjs';
 
 function AddNewListing() {
     const [selectedAddress, setSelectedAddress] = useState();
     const [coordinates, setCoordinates] = useState();
-
+    const { user } = useUser()
 
     const nextHandler = async () => {
         console.log(selectedAddress, coordinates);
@@ -14,9 +16,19 @@ function AddNewListing() {
         const { data, error } = await supabase
             .from('listing')
             .insert([
-                { some_column: 'someValue', other_column: 'otherValue' },
+                {
+                    address: selectedAddress.label,
+                    coordinates: coordinates,
+                    createdBy: user?.primaryEmailAddress
+                },
             ])
-            .select()
+            .select();
+        if (data) {
+            console.log("New data", data)
+        }
+        if (error) {
+            console.log(error)
+        }
 
     }
 
