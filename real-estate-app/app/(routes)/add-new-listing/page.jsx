@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import GoogleAddressSearch from '../../_components/GoogleAddressSearch'
 
 function AddNewListing() {
     return (
@@ -6,9 +7,7 @@ function AddNewListing() {
             <h2 className='text-2xl font-bold'>AddNewListing</h2>
             <div>
                 <h2 className='font-medium text-gray-400'>Enter Address which you want to add</h2>
-                <GooglePlacesAutocomplete
-                    apiKey={process.env.NEXT_PUBLIC_GOOGLE_PLACE_API_KEY}
-                />
+                <GoogleAddressSearch />
             </div>
         </div>
     )

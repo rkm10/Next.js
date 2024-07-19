@@ -1,11 +1,12 @@
 'use client'
 import React, { useEffect } from 'react'
 import Image from 'next/image'
-import { Button } from '@/components/ui/button'
+// import { Button } from './components/ui/button'
+import { Button } from '../../components/ui/button'
 import { Plus } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { SignInButton, UserButton, useUser } from '@clerk/nextjs'
+import { UserButton, useUser } from '@clerk/nextjs'
 
 function Header() {
     const path = usePathname();
