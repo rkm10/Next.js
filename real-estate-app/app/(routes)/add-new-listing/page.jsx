@@ -8,8 +8,16 @@ function AddNewListing() {
     const [coordinates, setCoordinates] = useState();
 
 
-    const nextHandler = () => {
+    const nextHandler = async () => {
         console.log(selectedAddress, coordinates);
+
+        const { data, error } = await supabase
+            .from('listing')
+            .insert([
+                { some_column: 'someValue', other_column: 'otherValue' },
+            ])
+            .select()
+
     }
 
     return (
@@ -22,7 +30,8 @@ function AddNewListing() {
                         selectedAddress={(value) => setSelectedAddress(value)}
                         setCoordinates={(value) => setCoordinates(value)}
                     />
-                    <Button onClick={nextHandler}>Next</Button>
+                    <Button disabled={!selectedAddress || !coordinates}
+                        onClick={nextHandler}>Next</Button>
                 </div>
             </div>
         </div>
