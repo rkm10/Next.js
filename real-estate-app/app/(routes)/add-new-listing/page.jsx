@@ -4,13 +4,16 @@ import GoogleAddressSearch from '../../_components/GoogleAddressSearch'
 import { Button } from '../../../components/ui/button';
 import { supabase } from '../../../utils/supabase/client';
 import { useUser } from '@clerk/nextjs';
+import { toast } from 'sonner';
 
 function AddNewListing() {
     const [selectedAddress, setSelectedAddress] = useState();
     const [coordinates, setCoordinates] = useState();
     const { user } = useUser()
+    const [loader, setLoader] = useState(false);
 
     const nextHandler = async () => {
+        setLoader(true)
         console.log(selectedAddress, coordinates);
 
         const { data, error } = await supabase
@@ -19,15 +22,19 @@ function AddNewListing() {
                 {
                     address: selectedAddress.label,
                     coordinates: coordinates,
-                    createdBy: user?.primaryEmailAddress
+                    createdBy: user?.primaryEmailAddress.emailAddress,
                 },
             ])
             .select();
         if (data) {
-            console.log("New data", data)
+            setLoader(false)
+            console.log("New data =========================", data)
+            toast("New Address Added for listing Successfully")
         }
         if (error) {
+            setLoader(false)
             console.log(error)
+            toast("there is some error")
         }
 
     }
@@ -42,7 +49,7 @@ function AddNewListing() {
                         selectedAddress={(value) => setSelectedAddress(value)}
                         setCoordinates={(value) => setCoordinates(value)}
                     />
-                    <Button disabled={!selectedAddress || !coordinates}
+                    <Button disabled={!selectedAddress || !coordinates || loader}
                         onClick={nextHandler}>Next</Button>
                 </div>
             </div>
