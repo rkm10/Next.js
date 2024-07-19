@@ -1,11 +1,12 @@
 import Image from 'next/image';
 import React, { useState } from 'react'
 
-function FileUpload() {
+function FileUpload({ setImages }) {
     const [imagePreview, setImagePreview] = useState([]);
     const handleFileUpload = (event) => {
         const files = event.target.files;
         console.log(files);
+        setImages(files)
         const previews = Array.from(files).map((file) => URL.createObjectURL(file));
         setImagePreview(previews);
     }

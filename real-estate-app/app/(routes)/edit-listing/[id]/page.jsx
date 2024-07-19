@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Label } from "../../../../components/ui/label";
 import { Input } from "../../../../components/ui/input";
 import { Textarea } from "../../../../components/ui/textarea";
@@ -25,6 +25,7 @@ function EditListing({ params }) {
 
     const { user } = useUser();
     const router = useRouter();
+    const [images, setImages] = useState([]);
 
     useEffect(() => {
         console.log("id", params.id)
@@ -53,6 +54,20 @@ function EditListing({ params }) {
         if (data) {
             console.log('final=============================', data);
             toast('Listing Updated and Published Successfully')
+        }
+        for (const image of images) {
+            const file = image;
+            const fileName = Date.now().toString();
+            const fileExt = fileName.split('.').pop();
+            const { data, error } = await supabase.storage
+                .from('listingImages')
+                .upload(`${fileName}`, file, {
+                    contentType: `image/${fileExt}`,
+                    upsert: false
+                });
+            if (error) {
+                toast('Error while uploading images')
+            }
         }
 
     }
@@ -151,7 +166,7 @@ function EditListing({ params }) {
                                     <Textarea placeholder="" name="description" onChange={handleChange} />
                                 </div>
                                 <h2 className='text-lg font-medium text-slate-500'>Upload Property Images</h2>
-                                <FileUpload />
+                                <FileUpload setImages={(value) => setImages(value)} />
                             </div>
                             <div className='flex justify-end gap-7'>
                                 <Button variant="outline" className="text-primary border-primary"> Save </Button>
