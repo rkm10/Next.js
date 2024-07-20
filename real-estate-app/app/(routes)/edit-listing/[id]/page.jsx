@@ -28,7 +28,6 @@ import {
 
 import { Formik } from 'formik';
 import { Button } from '../../../../components/ui/button';
-import { usePathname } from 'next/navigation';
 import { toast } from 'sonner';
 import { supabase } from '../../../../utils/supabase/client';
 import { useRouter } from 'next/navigation';
@@ -152,7 +151,7 @@ function EditListing({ params }) {
                             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
                                 <div className='flex flex-col gap-2'>
                                     <h2 className='text-lg font-medium text-slate-500'>Rent or Sell</h2>
-                                    <RadioGroup defaultValue="Sell"
+                                    <RadioGroup
                                         onValueChange={(e) => values.type = e}
                                     >
                                         <div className="flex items-center space-x-2">
