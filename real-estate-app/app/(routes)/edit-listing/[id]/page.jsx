@@ -4,6 +4,7 @@ import { Label } from "../../../../components/ui/label";
 import { Input } from "../../../../components/ui/input";
 import { Textarea } from "../../../../components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "../../../../components/ui/radio-group";
+//Select shadcn
 import {
     Select,
     SelectContent,
@@ -11,6 +12,20 @@ import {
     SelectTrigger,
     SelectValue,
 } from "../../../../components/ui/select";
+
+//Alert Dialog shadcn
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+} from "../../../../components/ui/alert-dialog"
+
 import { Formik } from 'formik';
 import { Button } from '../../../../components/ui/button';
 import { usePathname } from 'next/navigation';
@@ -63,8 +78,10 @@ function EditListing({ params }) {
         if (data) {
             console.log('final=============================', data);
             toast('Listing Updated and Published Successfully')
+            setLoading(false)
         }
         for (const image of images) {
+            setLoading(true)
             const file = image;
             const fileName = Date.now().toString();
             const fileExt = fileName.split('.').pop();
@@ -74,6 +91,7 @@ function EditListing({ params }) {
                     contentType: `image/${fileExt}`,
                     upsert: false //update existing file if exists make TRUE.
                 });
+
             if (error) {
                 setLoading(false)
                 toast('Error while uploading images')
@@ -86,6 +104,9 @@ function EditListing({ params }) {
                         { url: imageURL, listing_id: params.id }
                     ])
                     .select();
+                if (data) {
+                    setLoading(false)
+                }
 
                 if (error) {
                     setLoading(false)
@@ -94,6 +115,19 @@ function EditListing({ params }) {
             setLoading(false)
         }
 
+    }
+
+    const publishBtnhandler = async () => {
+        setLoading(true)
+        const { data, error } = await supabase
+            .from('listing')
+            .update({ active: 'true' })
+            .eq('id', params.id)
+            .select()
+        if (data) {
+            setLoading(false)
+            toast('Listing Published Successfully')
+        }
     }
 
     return (
@@ -198,9 +232,30 @@ function EditListing({ params }) {
                                 />
                             </div>
                             <div className='flex justify-end gap-7'>
-                                <Button variant="outline" className="text-primary border-primary"> Save </Button>
-                                <Button disabled={loading} className="">
-                                    {loading ? <Loader2 className='mr-2 h-4 w-4 animate-spin' /> : 'Save & Publish'}</Button>
+                                <Button disabled={loading} variant='outline' className="">
+                                    {loading ? <Loader2 className='mr-2 h-4 w-4 animate-spin' /> : 'save'}</Button>
+
+                                <AlertDialog>
+                                    <AlertDialogTrigger asChild>
+                                        <Button type="button" disabled={loading} className="">
+                                            {loading ? <Loader2 className='mr-2 h-4 w-4 animate-spin' /> : 'Save & Publish'}</Button>
+                                    </AlertDialogTrigger>
+                                    <AlertDialogContent>
+                                        <AlertDialogHeader>
+                                            <AlertDialogTitle>Ready to Publish?</AlertDialogTitle>
+                                            <AlertDialogDescription>
+                                                Do you really want to publish the listing?
+                                            </AlertDialogDescription>
+                                        </AlertDialogHeader>
+                                        <AlertDialogFooter>
+                                            <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                            <AlertDialogAction onClick={() => publishBtnhandler()}>
+                                                {loading ? <Loader2 className='mr-2 h-4 w-4 animate-spin' /> : 'Publish'}
+                                            </AlertDialogAction>
+                                        </AlertDialogFooter>
+                                    </AlertDialogContent>
+                                </AlertDialog>
+
                             </div>
                         </div>
                     </form>
