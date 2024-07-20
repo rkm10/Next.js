@@ -26,6 +26,7 @@ function EditListing({ params }) {
     const { user } = useUser();
     const router = useRouter();
     const [images, setImages] = useState([]);
+    const [listing, setListing] = useState([]);
 
     useEffect(() => {
         console.log("id", params.id)
@@ -37,7 +38,12 @@ function EditListing({ params }) {
             .from('listing')
             .select('*')
             .eq('createdBy', user?.primaryEmailAddress.emailAddress)
-            .eq('id', params.id)
+            .eq('id', params.id);
+
+
+        if (data) {
+            setListing(data[0])
+        }
 
         if (data?.length <= 0) {
             router.replace('/')
@@ -45,16 +51,16 @@ function EditListing({ params }) {
     }
 
     const onSubmitHandler = async (formValue) => {
-        const { data, error } = await supabase
-            .from('listing')
-            .update(formValue)
-            .eq('id', params.id)
-            .select();
+        // const { data, error } = await supabase
+        //     .from('listing')
+        //     .update(formValue)
+        //     .eq('id', params.id)
+        //     .select();
 
-        if (data) {
-            console.log('final=============================', data);
-            toast('Listing Updated and Published Successfully')
-        }
+        // if (data) {
+        //     console.log('final=============================', data);
+        //     toast('Listing Updated and Published Successfully')
+        // }
         for (const image of images) {
             const file = image;
             const fileName = Date.now().toString();
@@ -67,6 +73,16 @@ function EditListing({ params }) {
                 });
             if (error) {
                 toast('Error while uploading images')
+            }
+            else {
+                console.log("raj=======", data);
+                const imageURL = process.env.NEXT_PUBLIC_IMAGE_URL + fileName
+                const { data, error } = await supabase
+                    .from('listingImages')
+                    .insert([
+                        { url: imageURL, listing_id: params.id }
+                    ])
+                    .select();
             }
         }
 
