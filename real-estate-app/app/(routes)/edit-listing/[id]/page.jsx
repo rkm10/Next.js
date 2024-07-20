@@ -38,12 +38,13 @@ function EditListing({ params }) {
     const verifyUserRecord = async () => {
         const { data, error } = await supabase
             .from('listing')
-            .select('*')
+            .select('*,listingImages(listing_id,url)')
             .eq('createdBy', user?.primaryEmailAddress.emailAddress)
             .eq('id', params.id);
 
 
         if (data) {
+            console.log(data);
             setListing(data[0])
         }
 
@@ -54,16 +55,16 @@ function EditListing({ params }) {
 
     const onSubmitHandler = async (formValue) => {
         setLoading(true)
-        // const { data, error } = await supabase
-        //     .from('listing')
-        //     .update(formValue)
-        //     .eq('id', params.id)
-        //     .select();
+        const { data, error } = await supabase
+            .from('listing')
+            .update(formValue)
+            .eq('id', params.id)
+            .select();
 
-        // if (data) {
-        //     console.log('final=============================', data);
-        //     toast('Listing Updated and Published Successfully')
-        // }
+        if (data) {
+            console.log('final=============================', data);
+            toast('Listing Updated and Published Successfully')
+        }
         for (const image of images) {
             const file = image;
             const fileName = Date.now().toString();
