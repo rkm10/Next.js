@@ -4,7 +4,7 @@ import React from 'react'
 import GoogleAddressSearch from './GoogleAddressSearch'
 import { Button } from '../../components/ui/button'
 
-function Listing({ latestListing }) {
+function Listing({ latestListing, handleSearchClick }) {
     return (
         <div>
             <div className='p-3 flex gap-6'>
@@ -13,7 +13,9 @@ function Listing({ latestListing }) {
                     setCoordinates={(v) => console.log(v)}
 
                 />
-                <Button className="flex gap-2"><Search calssName="h-4 w-4" />Search</Button>
+                <Button className="flex gap-2"
+                    onClick={handleSearchClick}
+                ><Search calssName="h-4 w-4" />Search</Button>
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-10'>
                 {latestListing?.length > 0 ? latestListing.map((item, index) => (
