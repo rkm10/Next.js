@@ -63,7 +63,7 @@ function EditListing({ params }) {
                 .from('listingImages')
                 .upload(`${fileName}`, file, {
                     contentType: `image/${fileExt}`,
-                    upsert: false
+                    upsert: false //update existing file if exists make TRUE.
                 });
             if (error) {
                 toast('Error while uploading images')
