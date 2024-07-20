@@ -30,7 +30,7 @@ function ListingMapView({ type }) {
     return (
         <div className='grid grid-cols-1 md:grid-cols-2'>
             <div>
-                <Listing latestListing={latestListing} />
+                <Listing latestListing={latestListing} handleSearchClick={handleSearchClick} />
             </div>
             <div>
                 Map
