@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React, { useState } from 'react'
 
-function FileUpload({ setImages }) {
+function FileUpload({ setImages, imageList }) {
     const [imagePreview, setImagePreview] = useState([]);
     const handleFileUpload = (event) => {
         const files = event.target.files;
@@ -34,6 +34,15 @@ function FileUpload({ setImages }) {
                     </div>
                 ))}
             </div>
+            {imageList && <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-10 gap-3 mt-3'>
+                {imagePreview.map((image, index) => (
+                    <div key={index}>
+                        <Image src={image?.url} alt={index} width={100} height={100}
+                            className='rounded-lg object-cover h-[100px] w-[100px]'
+                        />
+                    </div>
+                ))}
+            </div>}
         </div>
     )
 }
