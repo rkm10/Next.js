@@ -18,7 +18,9 @@ function ListingMapView({ type }) {
                 url)`)
             .eq('active', true)
             .eq('type', type)
+            .order('id', { ascending: false })
         if (data) {
+            console.log(data);
             setLatestListing(data)
         }
         if (error) {
