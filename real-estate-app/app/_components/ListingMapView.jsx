@@ -27,6 +27,7 @@ function ListingMapView({ type }) {
             toast('server side error')
         }
     }
+
     return (
         <div className='grid grid-cols-1 md:grid-cols-2'>
             <div>
