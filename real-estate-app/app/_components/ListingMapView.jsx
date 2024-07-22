@@ -28,6 +28,9 @@ function ListingMapView({ type }) {
         }
     }
 
+    const handleSearchClick = () => {
+        console.log('search clicked')
+    }
     return (
         <div className='grid grid-cols-1 md:grid-cols-2'>
             <div>
