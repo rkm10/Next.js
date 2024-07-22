@@ -77,7 +77,9 @@ function ListingMapView({ type }) {
             <div className='fixed right-10 h-full 
             md:w-[45%] lg:w-[45%] xl:w-[45%]
             '>
-                <GoogleMapsSection coordinates={coordinates} />
+                <GoogleMapsSection
+                    latestListing={latestListing}
+                    coordinates={coordinates} />
             </div>
         </div>
     )
