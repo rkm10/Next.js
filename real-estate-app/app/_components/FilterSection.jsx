@@ -41,6 +41,7 @@ function FilterSection({ setBedCount, setBathCount, setParkingCount, setHomeType
                     <SelectValue placeholder="Parking" />
                 </SelectTrigger>
                 <SelectContent>
+                    <SelectItem value="1"><h2 className='flex gap-2'> <CarFront className='h-4 w-4 text-primary' />1+</h2></SelectItem>
                     <SelectItem value="2"><h2 className='flex gap-2'> <CarFront className='h-4 w-4 text-primary' />2+</h2></SelectItem>
                     <SelectItem value="3"><h2 className='flex gap-2'> <CarFront className='h-4 w-4 text-primary' />3+</h2></SelectItem>
                     <SelectItem value="4"><h2 className='flex gap-2'> <CarFront className='h-4 w-4 text-primary' />4+</h2></SelectItem>
