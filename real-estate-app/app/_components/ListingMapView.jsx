@@ -32,14 +32,20 @@ function ListingMapView({ type }) {
 
     const handleSearchClick = async () => {
         console.log(searchedAddress);
-        // const { data, error } = await supabase
-        //     .from('listing')
-        //     .select(`*,listingImages(
-        //         listing_id,
-        //         url)`)
-        //     .eq('active', true)
-        //     .eq('type', type)
-        //     .order('id', { ascending: false })
+        const searchTerm = searchedAddress?.value?.structured_formatting?.main_text
+        const { data, error } = await supabase
+            .from('listing')
+            .select(`*,listingImages(
+                listing_id,
+                url)`)
+            .eq('active', true)
+            .eq('type', type)
+            .like('address', `%${searchTerm}%`) // search by address by name
+            .order('id', { ascending: false })
+
+        if (data) {
+            setLatestListing(data);
+        }
     }
     return (
         <div className='grid grid-cols-1 md:grid-cols-2'>
