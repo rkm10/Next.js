@@ -15,8 +15,8 @@ function GoogleMapsSection({ coordinates, latestListing }) {
     });
 
     const [center, setCenter] = useState({
-        lat: -3.745,
-        lng: -38.523
+        lat: 12.9715987,
+        lng: 77.5945627
     });
     const [map, setMap] = React.useState(null);
 
@@ -30,8 +30,8 @@ function GoogleMapsSection({ coordinates, latestListing }) {
     const onLoad = React.useCallback(function callback(map) {
         // This is just an example of getting and using the map instance!!! don't just blindly copy! 
         /// remember to replace with your map instance
-        const bounds = new window.google.maps.LatLngBounds(center);
-        map.fitBounds(bounds);
+        // const bounds = new window.google.maps.LatLngBounds(center);
+        // map.fitBounds(bounds);
 
         setMap(map);
     }, []);
@@ -48,7 +48,7 @@ function GoogleMapsSection({ coordinates, latestListing }) {
         <GoogleMap
             mapContainerStyle={containerStyle}
             center={center}
-            zoom={12}
+            zoom={14}
             onLoad={onLoad}
             onUnmount={onUnmount}
         >

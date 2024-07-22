@@ -2,6 +2,7 @@ import { BathIcon, BedDouble, MapPin, Ruler, X } from 'lucide-react'
 import Image from 'next/image'
 import React from 'react'
 import { Button } from '../../components/ui/button'
+import Link from 'next/link'
 
 function MarkerListingItem({ item, closeHandler }) {
     return (
@@ -27,7 +28,9 @@ function MarkerListingItem({ item, closeHandler }) {
                             {item.bathroom}
                         </h2>
                     </div>
-                    <Button size='sm'>View Details</Button>
+                    <Link href={'view-listing/' + item.id} >
+                        <Button className="w-full" size='sm'>View Details</Button>
+                    </Link>
                 </div>
             </div>
         </div>

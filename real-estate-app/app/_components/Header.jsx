@@ -22,8 +22,11 @@ function Header() {
                 <ul className='hidden md:flex gap-10'>
                     {/* // hidden for small screen */}
                     <Link href={'/'}><li className={`'hover:text-primary font-medium text-sm cursor-pointer text-slate-100' ${path === '/' ? 'text-primary' : 'text-slate-100'} `}>For Sell</li></Link>
-                    <li className='hover:text-primary font-medium text-sm cursor-pointer text-slate-100'>For Rent</li>
-                    <li className='hover:text-primary font-medium text-sm cursor-pointer text-slate-100'>Agent</li>
+                    <Link href={'/rent'}><li className={`'hover:text-primary font-medium text-sm cursor-pointer text-slate-100' ${path === '/rent' ? 'text-primary' : 'text-slate-100'} `}>For Rent</li></Link>
+
+
+                    {/* <li className='hover:text-primary font-medium text-sm cursor-pointer text-slate-100'>For Rent</li> */}
+                    {/* <li className='hover:text-primary font-medium text-sm cursor-pointer text-slate-100'>Agent</li> */}
                 </ul>
             </div>
             <div className='flex gap-2'>
