@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 import Listing from './Listing'
 import { supabase } from '../../utils/supabase/client'
 import { toast } from 'sonner'
+import dynamic from 'next/dynamic'
+const GoogleMapsSection = dynamic(() => import('./GoogleMapsSection'), { ssr: false })
 
 function ListingMapView({ type }) {
     const [latestListing, setLatestListing] = useState([]);
@@ -71,7 +73,7 @@ function ListingMapView({ type }) {
                 />
             </div>
             <div>
-                Map
+                <GoogleMapsSection />
             </div>
         </div>
     )
