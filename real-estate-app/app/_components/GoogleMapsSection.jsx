@@ -1,26 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 
 const containerStyle = {
-    width: '400px',
-    height: '400px'
+    width: '100%',
+    height: '80vh',
+    borderRadius: '10px'
 };
 
-const center = {
-    lat: -3.745,
-    lng: -38.523
-};
-
-function GoogleMapsSection() {
+function GoogleMapsSection({ coordinates }) {
     const { isLoaded, loadError } = useJsApiLoader({
         id: 'google-map-script',
         googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
     });
 
+    const [center, setCenter] = useState({
+        lat: -3.745,
+        lng: -38.523
+    });
     const [map, setMap] = React.useState(null);
 
+
+    useEffect(() => {
+        if (coordinates) {
+            setCenter(coordinates)
+        }
+    }, [coordinates])
+
     const onLoad = React.useCallback(function callback(map) {
-        // This is just an example of getting and using the map instance!!! don't just blindly copy!
+        // This is just an example of getting and using the map instance!!! don't just blindly copy! 
+        /// remember to replace with your map instance
         const bounds = new window.google.maps.LatLngBounds(center);
         map.fitBounds(bounds);
 
