@@ -48,11 +48,12 @@ function FilterSection({ setBedCount, setBathCount, setParkingCount, setHomeType
                 </SelectContent>
             </Select>
 
-            <Select onValueChange={setHomeType}>
+            <Select onValueChange={(value) => value === "All" ? setHomeType(null) : setHomeType}>
                 <SelectTrigger className="w-[150px] md:w-[180px]">
                     <SelectValue placeholder="Home Type" />
                 </SelectTrigger>
                 <SelectContent>
+                    <SelectItem value="All"><h2 className='flex gap-2'> All</h2></SelectItem>
                     <SelectItem value="Single Family Home"><h2 className='flex gap-2'> Single Family Home</h2></SelectItem>
                     <SelectItem value="Town House"><h2 className='flex gap-2'> Town House</h2></SelectItem>
                     <SelectItem value="Condo"><h2 className='flex gap-2'> Condo</h2></SelectItem>
