@@ -7,6 +7,10 @@ import { toast } from 'sonner'
 function ListingMapView({ type }) {
     const [latestListing, setLatestListing] = useState([]);
     const [searchedAddress, setSearchedAddress] = useState('');
+    const [bedCount, setBedCount] = useState(0);
+    const [bathCount, setBathCount] = useState(0);
+    const [parkingCount, setParkingCount] = useState(0);
+    const [homeType, setHomeType] = useState('');
 
     useEffect(() => {
         getLatestListing();
@@ -33,16 +37,23 @@ function ListingMapView({ type }) {
     const handleSearchClick = async () => {
         console.log(searchedAddress);
         const searchTerm = searchedAddress?.value?.structured_formatting?.main_text
-        const { data, error } = await supabase
+        let query = supabase
             .from('listing')
             .select(`*,listingImages(
                 listing_id,
                 url)`)
             .eq('active', true)
             .eq('type', type)
+            .gte('bedroom', bedCount)
+            .gte('bathroom', bathCount)
+            .gte('parking', parkingCount)
             .like('address', `%${searchTerm}%`) // search by address by name
             .order('id', { ascending: false })
+        if (homeType) {
+            query = query.eq('propertyType', homeType)
+        }
 
+        const { data, error } = await query;
         if (data) {
             setLatestListing(data);
         }
