@@ -61,7 +61,14 @@ function ListingMapView({ type }) {
     return (
         <div className='grid grid-cols-1 md:grid-cols-2'>
             <div>
-                <Listing latestListing={latestListing} handleSearchClick={handleSearchClick} searchedAddress={(v) => setSearchedAddress(v)} />
+                <Listing latestListing={latestListing}
+                    handleSearchClick={handleSearchClick}
+                    searchedAddress={(v) => setSearchedAddress(v)}
+                    setBathCount={setBathCount}
+                    setBedCount={setBedCount}
+                    setHomeType={setHomeType}
+                    setParkingCount={setParkingCount}
+                />
             </div>
             <div>
                 Map
