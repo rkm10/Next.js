@@ -13,6 +13,7 @@ function ListingMapView({ type }) {
     const [bathCount, setBathCount] = useState(0);
     const [parkingCount, setParkingCount] = useState(0);
     const [homeType, setHomeType] = useState('');
+    const [coordinates, setCoordinates] = useState();
 
     useEffect(() => {
         getLatestListing();
@@ -61,7 +62,7 @@ function ListingMapView({ type }) {
         }
     }
     return (
-        <div className='grid grid-cols-1 md:grid-cols-2'>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
             <div>
                 <Listing latestListing={latestListing}
                     handleSearchClick={handleSearchClick}
@@ -70,10 +71,13 @@ function ListingMapView({ type }) {
                     setBedCount={setBedCount}
                     setHomeType={setHomeType}
                     setParkingCount={setParkingCount}
+                    setCoordinates={setCoordinates}
                 />
             </div>
-            <div>
-                <GoogleMapsSection />
+            <div className='fixed right-10 h-full 
+            md:w-[45%] lg:w-[45%] xl:w-[45%]
+            '>
+                <GoogleMapsSection coordinates={coordinates} />
             </div>
         </div>
     )
