@@ -1,8 +1,16 @@
+import { MarkerF } from '@react-google-maps/api'
 import React from 'react'
 
-function MarkerItem() {
+function MarkerItem({ item }) {
     return (
-        <div>MarkerItem</div>
+        <div>
+            <MarkerF
+                position={item.coordinates}
+            >
+
+
+            </MarkerF>
+        </div>
     )
 }
 
