@@ -23,7 +23,9 @@ function MarkerItem({ item }) {
                     mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
                 >
 
-                    <MarkerListingItem item={selectedListing} />
+                    <MarkerListingItem
+                        closeHandler={() => setSelectedListing(null)}
+                        item={selectedListing} />
 
 
                 </OverlayView>}
