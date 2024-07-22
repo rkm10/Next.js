@@ -3,6 +3,7 @@ import Image from 'next/image'
 import React, { useState } from 'react'
 import GoogleAddressSearch from './GoogleAddressSearch'
 import { Button } from '../../components/ui/button'
+import FilterSection from './FilterSection'
 
 function Listing({ latestListing, handleSearchClick, searchedAddress }) {
     const [address, setAddress] = useState([])
@@ -18,6 +19,7 @@ function Listing({ latestListing, handleSearchClick, searchedAddress }) {
                     onClick={handleSearchClick}
                 ><Search calssName="h-4 w-4" />Search</Button>
             </div>
+            <FilterSection />
             {address && <div className='px-3 my-5'>
                 <h2 className='text-xl'>
                     Found <span className='font-bold'>{latestListing?.length}</span> results for <span className='font-bold text-primary'>{address?.label}</span>
