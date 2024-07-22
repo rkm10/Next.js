@@ -13,7 +13,7 @@ function FilterSection() {
     return (
         <div className='px-3 py-2 grid grid-cols-2 md:flex gap-2'>
             <Select>
-                <SelectTrigger className="w-[180px]">
+                <SelectTrigger className="w-[150px] sm:w-[180px]">
                     <SelectValue placeholder="Bedroom" />
                 </SelectTrigger>
                 <SelectContent>
@@ -25,7 +25,7 @@ function FilterSection() {
             </Select>
 
             <Select>
-                <SelectTrigger className="w-[180px]">
+                <SelectTrigger className="w-[150px] sm:w-[180px]">
                     <SelectValue placeholder="Bathroom" />
                 </SelectTrigger>
                 <SelectContent>
@@ -37,7 +37,7 @@ function FilterSection() {
             </Select>
 
             <Select>
-                <SelectTrigger className="w-[180px]">
+                <SelectTrigger className="w-[150px] sm:w-[180px]">
                     <SelectValue placeholder="Parking" />
                 </SelectTrigger>
                 <SelectContent>
@@ -48,6 +48,16 @@ function FilterSection() {
                 </SelectContent>
             </Select>
 
+            <Select>
+                <SelectTrigger className="w-[150px] sm:w-[180px]">
+                    <SelectValue placeholder="Home Type" />
+                </SelectTrigger>
+                <SelectContent>
+                    <SelectItem value="Single Family Home"><h2 className='flex gap-2'> Single Family Home</h2></SelectItem>
+                    <SelectItem value="Town House"><h2 className='flex gap-2'> Town House</h2></SelectItem>
+                    <SelectItem value="Condo"><h2 className='flex gap-2'> Condo</h2></SelectItem>
+                </SelectContent>
+            </Select>
         </div>
     )
 }
