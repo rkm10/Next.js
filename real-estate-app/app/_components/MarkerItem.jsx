@@ -1,5 +1,6 @@
 import { MarkerF, OverlayView } from '@react-google-maps/api'
 import React, { useState } from 'react'
+import MarkerListingItem from './MarkerListingItem';
 
 function MarkerItem({ item }) {
     const [selectedListing, setSelectedListing] = useState();
@@ -22,10 +23,7 @@ function MarkerItem({ item }) {
                     mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
                 >
 
-                    <div className='bg-white rounded-lg p-3'>
-                        <h2 className='text-xl font-bold'>{selectedListing.name}</h2>
-                        <h2 className=''>{selectedListing.address}</h2>
-                    </div>
+                    <MarkerListingItem item={selectedListing} />
 
 
                 </OverlayView>}
