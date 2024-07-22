@@ -9,11 +9,11 @@ import {
 } from '../../components/ui/select';
 import { Bath, BedDouble, CarFront } from 'lucide-react';
 
-function FilterSection() {
+function FilterSection({ setBedCount, setBathCount, setParkingCount, setHomeType }) {
     return (
         <div className='px-3 py-2 grid grid-cols-2 md:flex gap-2'>
-            <Select>
-                <SelectTrigger className="w-[150px] sm:w-[180px]">
+            <Select onValueChange={setBedCount}>
+                <SelectTrigger className="w-[150px]">
                     <SelectValue placeholder="Bedroom" />
                 </SelectTrigger>
                 <SelectContent>
@@ -24,8 +24,8 @@ function FilterSection() {
                 </SelectContent>
             </Select>
 
-            <Select>
-                <SelectTrigger className="w-[150px] sm:w-[180px]">
+            <Select onValueChange={setBathCount}>
+                <SelectTrigger className="w-[150px] md:w-[180px]">
                     <SelectValue placeholder="Bathroom" />
                 </SelectTrigger>
                 <SelectContent>
@@ -36,8 +36,8 @@ function FilterSection() {
                 </SelectContent>
             </Select>
 
-            <Select>
-                <SelectTrigger className="w-[150px] sm:w-[180px]">
+            <Select onValueChange={setParkingCount}>
+                <SelectTrigger className="w-[150px] md:w-[180px]">
                     <SelectValue placeholder="Parking" />
                 </SelectTrigger>
                 <SelectContent>
@@ -48,8 +48,8 @@ function FilterSection() {
                 </SelectContent>
             </Select>
 
-            <Select>
-                <SelectTrigger className="w-[150px] sm:w-[180px]">
+            <Select onValueChange={setHomeType}>
+                <SelectTrigger className="w-[150px] md:w-[180px]">
                     <SelectValue placeholder="Home Type" />
                 </SelectTrigger>
                 <SelectContent>
