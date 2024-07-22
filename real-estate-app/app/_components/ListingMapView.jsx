@@ -5,7 +5,9 @@ import { supabase } from '../../utils/supabase/client'
 import { toast } from 'sonner'
 
 function ListingMapView({ type }) {
-    const [latestListing, setLatestListing] = useState([])
+    const [latestListing, setLatestListing] = useState([]);
+    const [searchedAddress, setSearchedAddress] = useState('');
+
     useEffect(() => {
         getLatestListing();
     }, [])
@@ -28,13 +30,21 @@ function ListingMapView({ type }) {
         }
     }
 
-    const handleSearchClick = () => {
-        console.log('search clicked')
+    const handleSearchClick = async () => {
+        console.log(searchedAddress);
+        // const { data, error } = await supabase
+        //     .from('listing')
+        //     .select(`*,listingImages(
+        //         listing_id,
+        //         url)`)
+        //     .eq('active', true)
+        //     .eq('type', type)
+        //     .order('id', { ascending: false })
     }
     return (
         <div className='grid grid-cols-1 md:grid-cols-2'>
             <div>
-                <Listing latestListing={latestListing} handleSearchClick={handleSearchClick} />
+                <Listing latestListing={latestListing} handleSearchClick={handleSearchClick} searchedAddress={(v) => setSearchedAddress(v)} />
             </div>
             <div>
                 Map
