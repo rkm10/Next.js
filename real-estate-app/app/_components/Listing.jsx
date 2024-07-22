@@ -1,15 +1,16 @@
 import { BathIcon, BedDouble, MapPin, Ruler, Search } from 'lucide-react'
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 import GoogleAddressSearch from './GoogleAddressSearch'
 import { Button } from '../../components/ui/button'
 
 function Listing({ latestListing, handleSearchClick, searchedAddress }) {
+    const [address, setAddress] = useState([])
     return (
         <div>
             <div className='p-3 flex gap-6'>
                 <GoogleAddressSearch
-                    selectedAddress={(v) => searchedAddress(v)}
+                    selectedAddress={(v) => { searchedAddress(v); setAddress(v) }}
                     setCoordinates={(v) => console.log(v)}
 
                 />
@@ -17,13 +18,18 @@ function Listing({ latestListing, handleSearchClick, searchedAddress }) {
                     onClick={handleSearchClick}
                 ><Search calssName="h-4 w-4" />Search</Button>
             </div>
+            {address && <div className='px-3 my-5'>
+                <h2 className='text-xl'>
+                    Found <span className='font-bold'>{latestListing?.length}</span> results for <span className='font-bold text-primary'>{address?.label}</span>
+                </h2>
+            </div>}
             <div className='grid grid-cols-1 md:grid-cols-2 gap-10'>
                 {latestListing?.length > 0 ? latestListing.map((item, index) => (
-                    <div className='p-3 hover:border hover:border-primary cursor-pointer rounded-lg' >
+                    <div className='p-3 hover:border hover:border-primary cursor-pointer rounded-lg' key={index} >
                         <Image src={item.listingImages[0].url}
                             width={800}
                             height={150}
-                            // alt={item.name}
+                            alt={item.name}
                             className='rounded-lg object-cover h-[150px]'
                         />
                         <div className='flex mt-2 flex-col gap-2'>
