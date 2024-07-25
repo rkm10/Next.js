@@ -15,6 +15,8 @@ function Header() {
     //     // console.log(path);
     // }, [])
 
+
+
     return (
         <div className='flex justify-between p-6 px-10 shadow-sm fixed top-0 w-full z-10 bg-slate-700'>
             <div className='flex gap-12 items-center'>
