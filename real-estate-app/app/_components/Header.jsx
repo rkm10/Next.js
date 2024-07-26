@@ -25,7 +25,7 @@ function Header() {
                     {/* // hidden for small screen */}
                     <Link href={'/'}><li className={`'hover:text-primary font-medium text-sm cursor-pointer text-slate-100' ${path === '/' ? 'text-primary' : 'text-slate-100'} `}>For Sell</li></Link>
                     <Link href={'/rent'}><li className={`'hover:text-primary font-medium text-sm cursor-pointer text-slate-100' ${path === '/rent' ? 'text-primary' : 'text-slate-100'} `}>For Rent</li></Link>
-
+                    <Link href={'/maps'}><li className={`'hover:text-primary font-medium text-sm cursor-pointer text-slate-100' ${path === '/agents' ? 'text-primary' : 'text-slate-100'} `}>Map</li></Link>
 
                     {/* <li className='hover:text-primary font-medium text-sm cursor-pointer text-slate-100'>For Rent</li> */}
                     {/* <li className='hover:text-primary font-medium text-sm cursor-pointer text-slate-100'>Agent</li> */}
