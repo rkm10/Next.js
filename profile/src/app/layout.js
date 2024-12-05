@@ -1,18 +1,19 @@
-import localFont from "next/font/local";
 import "./globals.css";
 import NeonBackground from "./Styles/NeonBackground";
 import Header from "./_components/header";
+import { Inter, Roboto_Mono } from 'next/font/google'
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+})
+
+const roboto_mono = Roboto_Mono({
+  subsets: ['latin'],
+  variable: '--font-roboto-mono',
+  display: 'swap',
+})
 
 export const metadata = {
   title: "Create Next App",
@@ -20,20 +21,11 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <NeonBackground />
-        <div className="flex">
-          <div className="w-3/6">
-            < Header />
-          </div>
-          <div className="w-3/6">
-            {children}
-          </div>
-        </div>
+      <body className={`${inter.variable} ${roboto_mono.variable} antialiased bg-slate-900 leading-relaxed text-slate-400 selection:bg-teal-300 selection:text-teal-900`}>
+        {children}
       </body>
     </html>
   );

@@ -1,28 +1,16 @@
-'use client'; 
+'use client';
 import React, { useEffect, useState } from "react";
 
 const NeonBackground = () => {
   const [isMouseMoveActive, setIsMouseMoveActive] = useState(window.innerWidth > 767);
+  const [position, setPosition] = useState("0px 0px");
 
   // Function to handle mouse movement
   const handleMouseMove = (e) => {
     if (!isMouseMoveActive) return;
 
     const { clientX: x, clientY: y } = e;
-    const { innerWidth: width, innerHeight: height } = window;
-
-    // Calculate percentage positions
-    const xPercent = (x / width) * 100;
-    const yPercent = (y / height) * 100;
-
-    // Create dynamic gradient
-    const gradient = `radial-gradient(circle at ${xPercent}% ${yPercent}%, 
-      rgba(51, 68, 119, 0.2) 5%, 
-      rgba(17, 47, 102, 0.3) 15%, 
-      rgba(0, 0, 0, 0) 25%)`;
-
-    // Apply gradient as background
-    document.body.style.background = gradient;
+    setPosition(`${x}px ${y}px`);
   };
 
   // Function to handle viewport width change
@@ -32,14 +20,9 @@ const NeonBackground = () => {
 
   // Set up event listeners
   useEffect(() => {
-    // Add mousemove listener if active
     if (isMouseMoveActive) {
       document.addEventListener("mousemove", handleMouseMove);
-    } else {
-      document.removeEventListener("mousemove", handleMouseMove);
     }
-
-    // Clean up on component unmount
     return () => {
       document.removeEventListener("mousemove", handleMouseMove);
     };
@@ -51,7 +34,19 @@ const NeonBackground = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  return null; // No UI needed, background is applied directly to the body
+  return (
+    <div
+      className="fixed inset-0 z-0 pointer-events-none"
+      style={{
+        background: `radial-gradient(
+          600px circle at ${position},
+          rgba(29, 78, 216, 0.15),
+          transparent 80%
+        )`,
+        transition: "background 0.1s ease",
+      }}
+    ></div>
+  );
 };
 
 export default NeonBackground;
