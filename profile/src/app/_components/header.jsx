@@ -69,8 +69,8 @@ function Header({ activeSection }) {
                   ></span>
                   <span
                     className={`nav-text text-xs font-bold uppercase tracking-widest ${activeSection === section
-                        ? 'text-slate-200'
-                        : 'text-slate-500'
+                      ? 'text-slate-200'
+                      : 'text-slate-500'
                       } group-hover:text-slate-200 group-focus-visible:text-slate-200`}
                   >
                     {section.toUpperCase()}
@@ -111,24 +111,23 @@ function Content() {
           <h2 className="text-sm font-bold uppercase tracking-widest text-slate-200 lg:sr-only">About</h2>
         </div>
         <div>
-          <p className="mb-4">I’m a developer passionate about crafting accessible, pixel-perfect user interfaces that blend thoughtful design with robust engineering. My favorite work lies at the intersection of design and development, creating experiences that not only look great but are meticulously built for performance and usability.</p>
-          <p className="mb-4">Currently, I'm a Junior Front-End Engineer at <a className="font-medium text-slate-200 hover:text-teal-300 focus-visible:text-teal-300" href="https://www.noveloffice.in/" target="_blank" rel="noreferrer noopener" aria-label="Novel Office (opens in a new tab)">Novel Office</a>, specializing in accessibility. I contribute to the creation and maintenance of UI components that power Novel Office frontend, ensuring our platform meets web accessibility standards and best practices to deliver an inclusive user experience.</p>
-          <p className="mb-4">In the past, I've had the opportunity to develop software across a variety of settings — from <a className="font-medium text-slate-200 hover:text-teal-300 focus-visible:text-teal-300" href="https://us.mullenlowe.com/" target="_blank" rel="noreferrer noopener" aria-label="advertising agency (opens in a new tab)">advertising agencies</a> and
-            <a className="font-medium text-slate-200 hover:text-teal-300 focus-visible:text-teal-300" href="https://www.apple.com/apple-music/" target="_blank" rel="noreferrer noopener" aria-label="huge corporation (opens in a new tab)">large corporations</a> to <a className="font-medium text-slate-200 hover:text-teal-300 focus-visible:text-teal-300" href="#" target="_blank" rel="noreferrer noopener" aria-label="start-up (opens in a new tab)">start-ups</a> and
-            <a className="font-medium text-slate-200 hover:text-teal-300 focus-visible:text-teal-300" href="#" target="_blank" rel="noreferrer noopener" aria-label="digital product studio (opens in a new tab)">small digital product studios</a>. Additionally, I also released a
-            <a className="font-medium text-slate-200 hover:text-teal-300 focus-visible:text-teal-300" href="#" target="_blank" rel="noreferrer noopener" aria-label="online video course (opens in a new tab)">comprehensive video course</a> a few years ago, guiding learners through building a web app with the Spotify API.</p>
-          <p>In my spare time, I’m usually climbing, reading, hanging out with my wife and two cats, or running around Hyrule searching for <span className="group/korok inline-flex ] lg:font-medium lg:text-slate-200"><span className="sr-only">Korok seeds</span>
-            <span className="group-hover/korok:text-red-400 transition duration-75 group-hover/korok:-translate-y-px delay-[50ms]" aria-hidden="true">K</span>
-            <span className="group-hover/korok:text-orange-400 transition duration-75 group-hover/korok:-translate-y-px delay-[75ms]" aria-hidden="true">o</span>
-            <span className="group-hover/korok:text-yellow-400 transition duration-75 group-hover/korok:-translate-y-px delay-[100ms]" aria-hidden="true">r</span>
-            <span className="group-hover/korok:text-lime-400 transition duration-75 group-hover/korok:-translate-y-px delay-[125ms]" aria-hidden="true">o</span>
-            <span className="group-hover/korok:text-green-400 transition duration-75 group-hover/korok:-translate-y-px delay-[150ms]" aria-hidden="true">k</span>
-            <span className="group-hover/korok:text-teal-400 transition duration-75 group-hover/korok:-translate-y-px delay-[175ms]" aria-hidden="true">&nbsp;</span>
-            <span className="group-hover/korok:text-cyan-400 transition duration-75 group-hover/korok:-translate-y-px delay-[200ms]" aria-hidden="true">s</span>
-            <span className="group-hover/korok:text-sky-400 transition duration-75 group-hover/korok:-translate-y-px delay-[225ms]" aria-hidden="true">e</span>
-            <span className="group-hover/korok:text-blue-400 transition duration-75 group-hover/korok:-translate-y-px delay-[250ms]" aria-hidden="true">e</span>
-            <span className="group-hover/korok:text-indigo-400 transition duration-75 group-hover/korok:-translate-y-px delay-[275ms]" aria-hidden="true">d</span>
-            <span className="group-hover/korok:text-violet-400 transition duration-75 group-hover/korok:-translate-y-px delay-[300ms]" aria-hidden="true">s</span></span>.</p>
+          <p className="mb-4">I’m a versatile developer with a knack for building intuitive, performant, and visually engaging web applications. My approach to development is grounded in creating solutions that are not only technically sound but also user-centered and accessible.</p>
+          <p className="mb-4">Currently, I'm a Front-End Engineer at <Link className="font-medium text-slate-200 hover:text-teal-300 focus-visible:text-teal-300" href="https://www.noveloffice.in/" target="_blank" rel="noreferrer noopener" aria-label="Novel Office (opens in a new tab)">Novel Office</Link>,where I specialize in delivering seamless digital experiences. My work includes developing custom features, refining interfaces, and ensuring the highest level of accessibility for users across platforms.</p>
+          <p className="mb-4">With a background that spans a wide range of technologies, including <Link className="font-medium text-slate-200 hover:text-teal-300 focus-visible:text-teal-300" href="https://react.dev/" target="_blank" rel="noreferrer noopener" aria-label="React (opens in a new tab)">React</Link>, <Link className="font-medium text-slate-200 hover:text-teal-300 focus-visible:text-teal-300" href="https://nextjs.org/" target="_blank" rel="noreferrer noopener" aria-label="start-up (opens in a new tab)">Next.js</Link> and
+            <Link className="font-medium text-slate-200 hover:text-teal-300 focus-visible:text-teal-300" href="https://wordpress.com/" target="_blank" rel="noreferrer noopener" aria-label="digital product studio (opens in a new tab)"> Wordpress</Link>.  and emerging DevOps practices,
+            I’ve contributed to projects ranging from interactive dashboards to scalable web components. I take pride in merging modern design principles with functional code to deliver products that leave a lasting impact.</p>
+          <p>When I’m not coding, you’ll often find me strategizing in chess, exploring immersive manga and manhwa worlds, spending quality time with my loved ones, or unlocking the <span className="group/raj lg:cursor-[url('/images/raj/luffy.png'),_pointer] inline-flex lg:font-medium lg:text-slate-200" ><span className="sr-only">Mysteries</span>
+            <span className="group-hover/raj:text-red-400 transition duration-75 group-hover/raj:-translate-y-px delay-[50ms]" aria-hidden="true">M</span>
+            <span className="group-hover/raj:text-red-500 transition duration-75 group-hover/raj:-translate-y-px delay-[75ms]" aria-hidden="true">y</span>
+            <span className="group-hover/raj:text-red-600 transition duration-75 group-hover/raj:-translate-y-px delay-[100ms]" aria-hidden="true">s</span>
+            <span className="group-hover/raj:text-red-700 transition duration-75 group-hover/raj:-translate-y-px delay-[125ms]" aria-hidden="true">t</span>
+            <span className="group-hover/raj:text-red-800 transition duration-75 group-hover/raj:-translate-y-px delay-[150ms]" aria-hidden="true">e</span>
+            <span className="group-hover/raj:text-cyan-400 transition duration-75 group-hover/raj:-translate-y-px delay-[175ms]" aria-hidden="true">r</span>
+            <span className="group-hover/raj:text-cyan-400 transition duration-75 group-hover/raj:-translate-y-px delay-[200ms]" aria-hidden="true">i</span>
+            <span className="group-hover/raj:text-sky-400 transition duration-75 group-hover/raj:-translate-y-px delay-[225ms]" aria-hidden="true">e</span>
+            <span className="group-hover/raj:text-blue-400 transition duration-75 group-hover/raj:-translate-y-px delay-[250ms]" aria-hidden="true">s</span> &nbsp;</span>
+            of Hyrule in my downtime.
+          </p>
         </div>
 
       </section>
@@ -150,7 +149,7 @@ function Content() {
                 <div className="z-10 sm:col-span-6">
                   <h3 className="font-medium leading-snug text-slate-200">
                     <div>
-                      <a className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base" href="https://www.noveloffice.in"
+                      <Link className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base" href="https://www.noveloffice.in"
                         target="_blank" rel="noreferrer noopener" aria-label="Senior Frontend Engineer, Accessibility at Klaviyo (opens in a new tab)">
                         <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
                         <span>Web Developer | <span className="inline-block">Novel Office
@@ -161,7 +160,7 @@ function Content() {
                           </svg>
                         </span>
                         </span>
-                      </a>
+                      </Link>
                     </div>
                   </h3>
                   <>
@@ -198,7 +197,7 @@ function Content() {
                 <div className="z-10 sm:col-span-6">
                   <h3 className="font-medium leading-snug text-slate-200">
                     <div>
-                      <a className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base" href="https://www.noveloffice.in"
+                      <Link className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base" href="https://www.noveloffice.in"
                         target="_blank" rel="noreferrer noopener" aria-label="Senior Frontend Engineer, Accessibility at Klaviyo (opens in a new tab)">
                         <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
                         <span>Web Developer | <span className="inline-block">Novel Office
@@ -209,7 +208,7 @@ function Content() {
                           </svg>
                         </span>
                         </span>
-                      </a>
+                      </Link>
                     </div>
                   </h3>
                   <>
@@ -246,7 +245,7 @@ function Content() {
                 <div className="z-10 sm:col-span-6">
                   <h3 className="font-medium leading-snug text-slate-200">
                     <div>
-                      <a className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base" href="https://www.noveloffice.in"
+                      <Link className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base" href="https://www.noveloffice.in"
                         target="_blank" rel="noreferrer noopener" aria-label="Senior Frontend Engineer, Accessibility at Klaviyo (opens in a new tab)">
                         <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
                         <span>Web Developer | <span className="inline-block">Novel Office
@@ -257,7 +256,7 @@ function Content() {
                           </svg>
                         </span>
                         </span>
-                      </a>
+                      </Link>
                     </div>
                   </h3>
                   <>
@@ -294,7 +293,7 @@ function Content() {
                 <div className="z-10 sm:col-span-6">
                   <h3 className="font-medium leading-snug text-slate-200">
                     <div>
-                      <a className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base" href="https://www.noveloffice.in"
+                      <Link className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base" href="https://www.noveloffice.in"
                         target="_blank" rel="noreferrer noopener" aria-label="Senior Frontend Engineer, Accessibility at Klaviyo (opens in a new tab)">
                         <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
                         <span>Web Developer | <span className="inline-block">Novel Office
@@ -305,7 +304,7 @@ function Content() {
                           </svg>
                         </span>
                         </span>
-                      </a>
+                      </Link>
                     </div>
                   </h3>
                   <>
